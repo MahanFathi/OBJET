@@ -1,0 +1,12 @@
+{
+    "path_to_obj": "./resources/objects/circle.obj",
+    "color": {
+        "r": 223,
+        "g": 0,
+        "b": 36
+    },
+    "scale": 1.0,
+    "ambient_strength": 0.4,
+    "diffuse_strength": 0.3,
+    "specular_strength": 0.4
+}

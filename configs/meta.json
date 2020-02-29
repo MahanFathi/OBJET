@@ -1,0 +1,55 @@
+{
+    "objects":
+    [
+        {
+            "name": "room",
+            "path_to_json": "./configs/objects/room.json",
+            "rotation_y": 1.0,
+            "translation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "cross",
+            "path_to_json": "./configs/objects/cross.json",
+            "rotation_y": 1.0,
+            "translation": {
+                "x": 5.0,
+                "y": 0.0,
+                "z": 5.0
+            }
+        },
+        {
+            "name": "triangle",
+            "path_to_json": "./configs/objects/triangle.json",
+            "rotation_y": 1.0,
+            "translation": {
+                "x":  5.0,
+                "y":  0.01,
+                "z": -5.0
+            }
+        },
+        {
+            "name": "circle",
+            "path_to_json": "./configs/objects/circle.json",
+            "rotation_y": 4.0,
+            "translation": {
+                "x": -5.0,
+                "y":  0.0,
+                "z": -5.0
+            }
+        },
+        {
+            "name": "square",
+            "path_to_json": "./configs/objects/square.json",
+            "rotation_y": 1.0,
+            "translation": {
+                "x": -5.0,
+                "y":  0.01,
+                "z":  5.0
+            }
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "path_to_obj": "./resources/objects/square.obj",
+    "color": {
+        "r": 255,
+        "g": 107,
+        "b": 196
+    },
+    "scale": 1.0,
+    "ambient_strength": 0.4,
+    "diffuse_strength": 0.3,
+    "specular_strength": 0.4
+}

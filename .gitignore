@@ -1,0 +1,13 @@
+# binaries
+main
+
+# gtags
+GPATH
+GRTAGS
+GTAGS
+
+# glad source
+./src/glad.c
+
+# emacs config
+.clang_complete
