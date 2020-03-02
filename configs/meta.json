@@ -4,6 +4,7 @@
         {
             "name": "room",
             "path_to_json": "./configs/objects/room.json",
+            "scale": 0.5,
             "rotation_y": 1.0,
             "translation": {
                 "x": 0.0,
@@ -14,6 +15,7 @@
         {
             "name": "cross",
             "path_to_json": "./configs/objects/cross.json",
+            "scale": 1.0,
             "rotation_y": 1.0,
             "translation": {
                 "x": 5.0,
@@ -24,6 +26,7 @@
         {
             "name": "triangle",
             "path_to_json": "./configs/objects/triangle.json",
+            "scale": 1.0,
             "rotation_y": 1.0,
             "translation": {
                 "x":  5.0,
@@ -34,6 +37,7 @@
         {
             "name": "circle",
             "path_to_json": "./configs/objects/circle.json",
+            "scale": 1.0,
             "rotation_y": 4.0,
             "translation": {
                 "x": -5.0,
@@ -44,6 +48,7 @@
         {
             "name": "square",
             "path_to_json": "./configs/objects/square.json",
+            "scale": 1.0,
             "rotation_y": 1.0,
             "translation": {
                 "x": -5.0,

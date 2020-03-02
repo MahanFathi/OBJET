@@ -5,7 +5,6 @@
         "g": 43,
         "b": 43
     },
-    "scale": 1.0,
     "ambient_strength": 0.5,
     "diffuse_strength": 0.1,
     "specular_strength": 0.1

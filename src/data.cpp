@@ -15,7 +15,9 @@ data::MetaData::MetaData(const char *pathToMetaJSON) {
         // get strings
         objectNames.push_back(objects[i]["name"].GetString());
         objectJSONPaths.push_back(objects[i]["path_to_json"].GetString());
-        //get rotations and translations
+        //get scales, rotations, and translations
+        float objectScale = objects[i]["scale"].GetFloat();
+        objectScales.push_back(objectScale);
         float objectYRotation = objects[i]["rotation_y"].GetFloat();
         objectYRotations.push_back(objectYRotation);
         float translation_x = objects[i]["translation"]["x"].GetFloat();
@@ -37,7 +39,6 @@ data::ObjectData::ObjectData(const char *pathToObjectJSON) {
         float(objJSON["color"]["g"].GetInt()) / 255.0f,
         float(objJSON["color"]["b"].GetInt()) / 255.0f
     );
-    scale = objJSON["scale"].GetFloat();
     ambientStrength = objJSON["ambient_strength"].GetFloat();
     diffuseStrength = objJSON["diffuse_strength"].GetFloat();
     specularStrength = objJSON["specular_strength"].GetFloat();

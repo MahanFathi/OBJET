@@ -20,6 +20,7 @@ public:
     std::vector<std::string> objectJSONPaths;
     std::vector<glm::vec3> objectTranslations;
     std::vector<float> objectYRotations;
+    std::vector<float> objectScales;
     // camera
     glm::vec3 cameraPosition;
     glm::vec3 cameraLookAt;
@@ -39,7 +40,6 @@ public:
     /* Data */
     std::string objPath;
     glm::vec3 color;
-    float scale;
     float ambientStrength;
     float diffuseStrength;
     float specularStrength;
