@@ -25,9 +25,11 @@ public:
     glm::vec3 cameraPosition;
     glm::vec3 cameraLookAt;
     // lighting
-    glm::vec3 environmentColor;
-    std::vector<glm::vec3> lightingPosition;
-    std::vector<glm::vec3> lightingColor;
+    int pointLightCount;
+    std::vector<glm::vec3> pointLightPositions;
+    std::vector<glm::vec3> pointLightColors;
+    glm::vec3 directionalLightDirection;
+    glm::vec3 directionalLightColor;
 
     /* Functions */
     MetaData(const char *pathToObjectJSON);

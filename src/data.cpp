@@ -6,12 +6,12 @@
 
 data::MetaData::MetaData(const char *pathToMetaJSON) {
     rapidjson::Document metaJSON = readJSON(pathToMetaJSON);
-    rapidjson::Value& objects = metaJSON["objects"];
 
+    rapidjson::Value& objects = metaJSON["objects"];
     objectCount = objects.Size();
 
     /* parse the data into object */
-    for (rapidjson::SizeType i = 0; i < objects.Size(); i++) {
+    for (rapidjson::SizeType i = 0; i < objectCount; i++) {
         // get strings
         objectNames.push_back(objects[i]["name"].GetString());
         objectJSONPaths.push_back(objects[i]["path_to_json"].GetString());
@@ -27,6 +27,42 @@ data::MetaData::MetaData(const char *pathToMetaJSON) {
             glm::vec3(translation_x, translation_y, translation_z)
         );
     }
+
+    rapidjson::Value& pointLights = metaJSON["lighting"]["point_lights"];
+    pointLightCount = pointLights.Size();
+
+    /* parse the data into pointLights */
+    for (rapidjson::SizeType i = 0; i < pointLightCount; i++) {
+        // get position
+        float position_x = pointLights[i]["position"]["x"].GetFloat();
+        float position_y = pointLights[i]["position"]["y"].GetFloat();
+        float position_z = pointLights[i]["position"]["z"].GetFloat();
+        pointLightPositions.push_back(
+            glm::vec3(position_x, position_y, position_z)
+        );
+        // get color
+        float color_r = float(pointLights[i]["color"]["r"].GetInt()) / 255.0f;
+        float color_g = float(pointLights[i]["color"]["g"].GetInt()) / 255.0f;
+        float color_b = float(pointLights[i]["color"]["b"].GetInt()) / 255.0f;
+        pointLightColors.push_back(
+            glm::vec3(color_r, color_g, color_b)
+        );
+    }
+
+    /* parse the data into pointLights */
+    rapidjson::Value& directionalLight = metaJSON["lighting"]["directional_light"];
+    float direction_x = directionalLight["direction"]["x"].GetFloat();
+    float direction_y = directionalLight["direction"]["y"].GetFloat();
+    float direction_z = directionalLight["direction"]["z"].GetFloat();
+    directionalLightDirection = glm::vec3(
+        direction_x, direction_y, direction_z
+    );
+    float color_r = float(directionalLight["color"]["r"].GetInt()) / 255.0f;
+    float color_g = float(directionalLight["color"]["g"].GetInt()) / 255.0f;
+    float color_b = float(directionalLight["color"]["b"].GetInt()) / 255.0f;
+    directionalLightColor = glm::vec3(
+        color_r, color_g, color_b
+    );
 }
 
 

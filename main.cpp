@@ -66,7 +66,7 @@ int main()
     //  projection
     glm::mat4 view = glm::mat4(1.0f);
     glm::mat4 projection = glm::mat4(1.0f);
-    projection = glm::perspective(glm::radians(45.0f), 500.0f / 500.0f, 0.1f, 1000.0f);
+    projection = glm::perspective(glm::radians(60.0f), 500.0f / 500.0f, 0.1f, 1000.0f);
 
     // lighting position
     glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
@@ -82,7 +82,7 @@ int main()
 
         processInput(window);
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClearColor(0.55f, 0.77, 0.85f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glClear(GL_DEPTH_BUFFER_BIT);
 

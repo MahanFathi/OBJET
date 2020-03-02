@@ -19,4 +19,9 @@ public:
     Model(data::MetaData &metaData);
    
     void draw(Shader shader);
+
+private:
+    /* Functions */
+    void setTransformations(Shader shader, unsigned int objectNum);
+    void setLightProperties(Shader shader);
 };

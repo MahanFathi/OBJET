@@ -16,22 +16,22 @@
             "name": "cross",
             "path_to_json": "./configs/objects/cross.json",
             "scale": 1.0,
-            "rotation_y": 1.0,
+            "rotation_y": 2.0,
             "translation": {
-                "x": 5.0,
+                "x": 3.0,
                 "y": 0.0,
-                "z": 5.0
+                "z": 3.0
             }
         },
         {
             "name": "triangle",
             "path_to_json": "./configs/objects/triangle.json",
-            "scale": 1.0,
+            "scale": 1.5,
             "rotation_y": 1.0,
             "translation": {
-                "x":  5.0,
+                "x":  3.0,
                 "y":  0.01,
-                "z": -5.0
+                "z": -3.0
             }
         },
         {
@@ -40,9 +40,9 @@
             "scale": 1.0,
             "rotation_y": 4.0,
             "translation": {
-                "x": -5.0,
+                "x": -3.0,
                 "y":  0.0,
-                "z": -5.0
+                "z": -3.0
             }
         },
         {
@@ -51,10 +51,59 @@
             "scale": 1.0,
             "rotation_y": 1.0,
             "translation": {
-                "x": -5.0,
+                "x": -3.0,
                 "y":  0.01,
-                "z":  5.0
+                "z":  3.0
             }
         }
-    ]
+    ],
+
+    "lighting":
+    {
+        "point_lights":
+        [
+            {
+                "position": {
+                    "x": -5.0,
+                    "y":  5.0,
+                    "z":  5.0
+                },
+                "color": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                }
+            },
+            {
+                "position": {
+                    "x":  5.0,
+                    "y":  5.0,
+                    "z":  5.0
+                },
+                "color": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                }
+            }
+        ],
+
+        "directional_light":
+        {
+            "direction": {
+                "x":  1.0,
+                "y": -1.0,
+                "z":  1.0
+            },
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255
+            }
+        }
+    },
+
+    "camera":
+    {
+    }
 }
