@@ -1,7 +1,7 @@
 #include <iostream>
 #include <math.h>
 
-#include <glad/glad.h>
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
@@ -41,15 +41,12 @@ int main()
     }
     glfwMakeContextCurrent(window);
 
+    GLenum err = glewInit();
+    if (err != GLEW_OK)
+      exit(1);
+
     // hide and caputure the cursor
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-    // load opengl functions in GLAD
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-        return -1;
-    }
 
     // rendering window size
     glViewport(0, 0, 500, 500);

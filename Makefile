@@ -4,9 +4,9 @@ SRC_DIR=src/
 INC_DIR=inc/
 
 CC=clang++
-CFLAGS= -std=c++11 -Wall -I$(INC_DIR)
+CFLAGS= -std=c++11 -O3 -Wall -I$(INC_DIR)
 
-LIBS=-lglfw -lGL -lX11 -lassimp -lpthread -lXrandr -lXi -ldl
+LIBS=-lGLEW -lGLU -lGL -lglfw -lassimp -lpthread
 
 SRCS=$(BIN).cpp $(wildcard $(SRC_DIR)*.c*)
 
