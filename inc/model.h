@@ -24,4 +24,5 @@ private:
     /* Functions */
     void setTransformations(Shader shader, unsigned int objectNum);
     void setLightProperties(Shader shader);
+    void setCamera(Shader shader);
 };

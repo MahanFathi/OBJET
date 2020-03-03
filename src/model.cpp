@@ -13,6 +13,7 @@ Model::Model(data::MetaData &metaData):
 
 void Model::draw(Shader shader)
 {
+    setCamera(shader);
     setLightProperties(shader);
     for(unsigned int i = 0; i < objects.size(); i++) {
         setTransformations(shader, i);
@@ -49,4 +50,14 @@ void Model::setTransformations(Shader shader, unsigned int objectNum)
     translate = glm::translate(translate, metaData.objectTranslations[objectNum]);
     shader.setUniform("model", translate);
 
+}
+
+void Model::setCamera(Shader shader)
+{
+    glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0);
+    glm::mat4 view = glm::lookAt(
+        metaData.cameraPosition,
+        -metaData.cameraPosition + metaData.cameraTarget,
+        cameraUp);
+    shader.setUniform("view", view);
 }

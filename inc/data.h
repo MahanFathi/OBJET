@@ -23,7 +23,7 @@ public:
     std::vector<float> objectScales;
     // camera
     glm::vec3 cameraPosition;
-    glm::vec3 cameraLookAt;
+    glm::vec3 cameraTarget;
     // lighting
     int pointLightCount;
     std::vector<glm::vec3> pointLightPositions;

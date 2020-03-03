@@ -49,7 +49,7 @@ data::MetaData::MetaData(const char *pathToMetaJSON) {
         );
     }
 
-    /* parse the data into pointLights */
+    /* parse the data into directionalLigth */
     rapidjson::Value& directionalLight = metaJSON["lighting"]["directional_light"];
     float direction_x = directionalLight["direction"]["x"].GetFloat();
     float direction_y = directionalLight["direction"]["y"].GetFloat();
@@ -62,6 +62,21 @@ data::MetaData::MetaData(const char *pathToMetaJSON) {
     float color_b = float(directionalLight["color"]["b"].GetInt()) / 255.0f;
     directionalLightColor = glm::vec3(
         color_r, color_g, color_b
+    );
+
+    /* parse the data into camera */
+    rapidjson::Value& camera = metaJSON["camera"];
+    float position_x = camera["position"]["x"].GetFloat();
+    float position_y = camera["position"]["y"].GetFloat();
+    float position_z = camera["position"]["z"].GetFloat();
+    cameraPosition = glm::vec3(
+        position_x, position_y, position_z
+    );
+    float target_x = camera["target"]["x"].GetFloat();
+    float target_y = camera["target"]["y"].GetFloat();
+    float target_z = camera["target"]["z"].GetFloat();
+    cameraTarget = glm::vec3(
+        target_x, target_y, target_z
     );
 }
 
