@@ -46,6 +46,24 @@ void OBJET::DrawToImage(std::string pathToImage)
 }
 
 
+void OBJET::setObjectPosition(std::string objectName, std::vector<float> position)
+{
+    model->setObjectPosition(objectName, position);
+}
+
+
+void OBJET::setObjectYRotation(std::string objectName, float yRotation)
+{
+    model->setObjectYRotation(objectName, yRotation);
+}
+
+
+void OBJET::setObjectScale(std::string objectName, float scale)
+{
+    model->setObjectScale(objectName, scale);
+}
+
+
 void OBJET::InitOpenGL()
 {
     // init GLFW
@@ -55,7 +73,7 @@ void OBJET::InitOpenGL()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // create a window
-    window = glfwCreateWindow(500, 500, "LearnOpenGL", NULL, NULL);
+    window = glfwCreateWindow(500, 500, "OBJET", NULL, NULL);
     glfwMakeContextCurrent(window);
     glfwHideWindow(window);
 

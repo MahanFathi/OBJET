@@ -65,3 +65,41 @@ void Model::setCamera(Shader* shader)
     projection = glm::perspective(glm::radians(60.0f), 500.0f / 500.0f, 0.1f, 1000.0f);
     shader->setUniform("projection", projection);
 }
+
+
+unsigned Model::objectNameToIndex(std::string &objectName)
+{
+    std::ptrdiff_t pos = distance(
+        metaData.objectNames.begin(),
+        find(metaData.objectNames.begin(),
+             metaData.objectNames.end(),
+             objectName)
+    );
+    return unsigned(pos);
+}
+
+
+
+void Model::setObjectPosition(std::string &objectName, std::vector<float> position)
+{
+    unsigned index = objectNameToIndex(objectName);
+    metaData.objectTranslations[index] = glm::vec3(
+        position[0],
+        position[1],
+        position[2]
+    );
+}
+
+
+void Model::setObjectYRotation(std::string &objectName, float yRotation)
+{
+    unsigned index = objectNameToIndex(objectName);
+    metaData.objectYRotations[index] = yRotation;
+}
+
+
+void Model::setObjectScale(std::string &objectName, float scale)
+{
+    unsigned index = objectNameToIndex(objectName);
+    metaData.objectScales[index] = scale;
+}
