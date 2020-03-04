@@ -68,10 +68,6 @@ int main()
     glm::mat4 projection = glm::mat4(1.0f);
     projection = glm::perspective(glm::radians(60.0f), 500.0f / 500.0f, 0.1f, 1000.0f);
 
-    // lighting position
-    glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
-    glm::vec3 lightPosition = glm::vec3(1.0f, 10.0f, 25.0f);
-
     // run depth check (Z-buffer)
     glEnable(GL_DEPTH_TEST);
 
@@ -95,9 +91,7 @@ int main()
         objectShader.use();
         objectShader.setUniform("projection", projection);
         objectShader.setUniform("cameraPosition", cameraPos);
-        objectShader.setUniform("lightPosition", lightPosition);
-        objectShader.setUniform("lightColor", lightColor);
-       
+            
         // draw object
         model.draw(objectShader);
 
