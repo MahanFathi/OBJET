@@ -18,11 +18,11 @@ public:
     /*  Functions   */
     Model(data::MetaData &metaData);
    
-    void draw(Shader shader);
+    void draw(Shader* shader);
 
 private:
     /* Functions */
-    void setTransformations(Shader shader, unsigned int objectNum);
-    void setLightProperties(Shader shader);
-    void setCamera(Shader shader);
+    void setTransformations(Shader* shader, unsigned int objectNum);
+    void setLightProperties(Shader* shader);
+    void setCamera(Shader* shader);
 };

@@ -21,7 +21,7 @@
 class Object
 {
 public:
-    /*  Model Data */
+    /*  Data */
     std::vector<Mesh> meshes;
     std::string name;
     std::string directory;
@@ -30,7 +30,7 @@ public:
     /* Functions */
     Object(data::ObjectData &objectData, std::string &name);
 
-    void draw(Shader shader);
+    void draw(Shader* shader);
 
 private:
     /*  Functions   */

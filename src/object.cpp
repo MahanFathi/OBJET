@@ -20,14 +20,14 @@ Object::Object(data::ObjectData &objectData, std::string &name):
 }
 
 
-void Object::draw(Shader shader)
+void Object::draw(Shader* shader)
 {
     // set material attributes
-    shader.setUniform("material.color", objectData.color);
-    shader.setUniform("material.ambientStrength", objectData.ambientStrength);
-    shader.setUniform("material.diffuseStrength", objectData.diffuseStrength);
-    shader.setUniform("material.specularStrength", objectData.specularStrength);
-    shader.setUniform("material.shininess", 16.0f);
+    shader->setUniform("material.color", objectData.color);
+    shader->setUniform("material.ambientStrength", objectData.ambientStrength);
+    shader->setUniform("material.diffuseStrength", objectData.diffuseStrength);
+    shader->setUniform("material.specularStrength", objectData.specularStrength);
+    shader->setUniform("material.shininess", 16.0f);
 
     // draw all mesh
     for(unsigned int i = 0; i < meshes.size(); i++) {

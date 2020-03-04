@@ -11,3 +11,13 @@ GTAGS
 
 # emacs config
 .clang_complete
+
+# make outputs
+obj
+__pycache__
+_OBJET.so
+OBJET.o
+OBJET.py
+OBJET_wrap.cxx
+OBJET_wrap.o
+*.png
