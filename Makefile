@@ -30,4 +30,4 @@ $(OUT_DIR):
 	mkdir -p $(OUT_DIR)
 
 clean:
-	rm -rf $(BIN) $(OUT_DIR) OBJET_wrap.cxx OBJET_wrap.o _OBJET.so OBJET.o
+	rm -rf $(BIN) $(OUT_DIR) OBJET_wrap.cxx OBJET_wrap.o _OBJET.so OBJET.o OBJET.py
