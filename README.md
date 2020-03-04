@@ -4,7 +4,7 @@
 Load your own objects in a room, take a snapshot of the viewport, from the view point of the customizable camera, and load it to python. This gives you the ability to creat data on-the-fly, in your python data loader. Check out the footnoted video by Ali Eslami et al. to see such environment in practice.
 
 ## Dependencies
-On Arch linux
+On Arch Linux:
 ```
 sudo pacman -S mesa glfw-x11 glew assimp swig freeimage
 ```
