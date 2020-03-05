@@ -14,7 +14,11 @@ sudo pacman -S mesa glfw-x11 glew assimp swig freeimage
 make python
 ```
 ```python
+# for now
 from OBJET import OBJET
+objet = OBJET("./configs/meta.json")
+objet.setObjectPosition("cross", [3., 0., 3.])
+objet.DrawToImage("./output.png")
 ```
 
 ###### Ali Eslami et al.: www.youtube.com/watch?v=G-kWNQJ4idw
