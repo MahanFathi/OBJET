@@ -19,7 +19,7 @@ void OBJET::DrawToImage(std::string pathToImage)
     objectShader->use();
 
     // use specific buffer to draw
-    glDrawBuffer(GL_FRONT);
+    // glDrawBuffer(GL_FRONT);
 
     glClearColor(0.55f, 0.77, 0.85f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -37,7 +37,7 @@ void OBJET::DrawToImage(std::string pathToImage)
     GLubyte* pixels = new GLubyte[3 * width * height];
 
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
-    glReadBuffer(GL_FRONT);
+    // glReadBuffer(GL_FRONT);
     glReadPixels(0, 0, width, height, GL_BGR_EXT, GL_UNSIGNED_BYTE, pixels);
 
     FIBITMAP* image = FreeImage_ConvertFromRawBits(pixels, width, height, 3 * width, 24, 0x0000FF, 0xFF0000, 0x00FF00, false);
@@ -93,6 +93,27 @@ void OBJET::InitOpenGL()
 
     // run depth check (Z-buffer)
     glEnable(GL_DEPTH_TEST);
+
+    // off-screen rendering
+    // weird stuff happens in i3 for example when rendering to
+    // the main buffer, the desktop manager messes with window
+    unsigned int framebuffer;
+    glGenFramebuffers(1, &framebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    // color attachment texture
+    unsigned int textureColorbuffer;
+    glGenTextures(1, &textureColorbuffer);
+    glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 500, 500, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorbuffer, 0);
+    // renderbuffer object
+    unsigned int rbo;
+    glGenRenderbuffers(1, &rbo);
+    glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 500, 500);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
 }
 
 
