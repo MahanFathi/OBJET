@@ -18,6 +18,7 @@ public:
     /*  Functions   */
     Model(data::MetaData &metaData);
     void draw(Shader* shader);
+    void setEnvironmentPorperties(Shader* shader);
     void setObjectPosition(std::string &objectName, std::vector<float> position);
     void setObjectYRotation(std::string &objectName, float yRotation);
     void setObjectScale(std::string &objectName, float scale);

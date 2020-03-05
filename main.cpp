@@ -96,12 +96,13 @@ int main()
         objectShader->setUniform("projection", projection);
         objectShader->setUniform("cameraPosition", cameraPos);
             
-        // draw object
-        model.draw(objectShader);
-
-        // cam might be readjusted
+        model.setEnvironmentPorperties(objectShader);
+        // overried camera settings
         view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         objectShader->setUniform("view", view);
+        // draw
+        model.draw(objectShader);
+
 
         glfwSwapBuffers(window);
         glfwPollEvents();

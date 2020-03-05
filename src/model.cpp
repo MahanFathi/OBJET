@@ -11,10 +11,16 @@ Model::Model(data::MetaData &metaData):
     }
 }
 
-void Model::draw(Shader* shader)
+
+void Model::setEnvironmentPorperties(Shader* shader)
 {
     setCamera(shader);
     setLightProperties(shader);
+}
+
+
+void Model::draw(Shader* shader)
+{
     for(unsigned int i = 0; i < objects.size(); i++) {
         setTransformations(shader, i);
         objects[i].draw(shader);

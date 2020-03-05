@@ -26,6 +26,7 @@ void OBJET::DrawToImage(std::string pathToImage)
     glClear(GL_DEPTH_BUFFER_BIT);
 
     // draw object
+    model->setEnvironmentPorperties(objectShader);
     model->draw(objectShader);
 
     glFlush();
