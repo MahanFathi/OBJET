@@ -14,16 +14,17 @@ public:
 
 
     /* Function */
-    OBJET(std::string pathToMetaJSON);
+    OBJET(std::string pathToMetaJSON, int width, int heigth);
     void Draw();
     void ToImage(std::string pathToImage);
     std::vector<int> GetImage();
-    void setObjectPosition(std::string objectName, std::vector<float> position);
-    void setObjectYRotation(std::string objectName, float yRotation);
-    void setObjectScale(std::string objectName, float scale);
+    void SetObjectPosition(std::string objectName, std::vector<float> position);
+    void SetObjectYRotation(std::string objectName, float yRotation);
+    void SetObjectScale(std::string objectName, float scale);
 
 protected:
     /* Data */
+    int width, height;
     GLFWwindow* window;
     Shader* objectShader;
     Model* model;

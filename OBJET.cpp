@@ -1,12 +1,11 @@
 #include "OBJET.h"
 
-#include <iterator>
-
 #include <FreeImage.h>
 
 #include "util.h"
 
-OBJET::OBJET(std::string pathToMetaJSON)
+OBJET::OBJET(std::string pathToMetaJSON, int width, int height):
+    width(width), height(height)
 {
     InitOpenGL();
     InitShader();
@@ -37,8 +36,6 @@ void OBJET::Draw()
 std::vector<int> OBJET::GetImage()
 {
     // Make the BYTE array
-    int width = 500;
-    int height = 500;
     GLubyte* pixels = new GLubyte[3 * width * height];
 
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
@@ -55,8 +52,6 @@ std::vector<int> OBJET::GetImage()
 void OBJET::ToImage(std::string pathToImage)
 {
     // Make the BYTE array
-    int width = 500;
-    int height = 500;
     GLubyte* pixels = new GLubyte[3 * width * height];
 
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
@@ -69,19 +64,19 @@ void OBJET::ToImage(std::string pathToImage)
 }
 
 
-void OBJET::setObjectPosition(std::string objectName, std::vector<float> position)
+void OBJET::SetObjectPosition(std::string objectName, std::vector<float> position)
 {
     model->setObjectPosition(objectName, position);
 }
 
 
-void OBJET::setObjectYRotation(std::string objectName, float yRotation)
+void OBJET::SetObjectYRotation(std::string objectName, float yRotation)
 {
     model->setObjectYRotation(objectName, yRotation);
 }
 
 
-void OBJET::setObjectScale(std::string objectName, float scale)
+void OBJET::SetObjectScale(std::string objectName, float scale)
 {
     model->setObjectScale(objectName, scale);
 }
@@ -96,7 +91,7 @@ void OBJET::InitOpenGL()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // create a window
-    window = glfwCreateWindow(500, 500, "OBJET", NULL, NULL);
+    window = glfwCreateWindow(width, height, "OBJET", NULL, NULL);
     glfwMakeContextCurrent(window);
     glfwHideWindow(window);
 
@@ -108,7 +103,7 @@ void OBJET::InitOpenGL()
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // rendering window size
-    glViewport(0, 0, 500, 500);
+    glViewport(0, 0, width, height);
 
     // assign callback functions
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -126,7 +121,7 @@ void OBJET::InitOpenGL()
     unsigned int textureColorbuffer;
     glGenTextures(1, &textureColorbuffer);
     glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 500, 500, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorbuffer, 0);
@@ -134,7 +129,7 @@ void OBJET::InitOpenGL()
     unsigned int rbo;
     glGenRenderbuffers(1, &rbo);
     glBindRenderbuffer(GL_RENDERBUFFER, rbo);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 500, 500);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
 }
 
