@@ -22,11 +22,11 @@ class Objet(object):
     def to_image(self, path_to_image):
         self._OBJET.ToImage(path_to_image)
 
-    def set_objetct_position(self, object_name, position):
+    def set_object_position(self, object_name, position):
         self._OBJET.SetObjectPosition(object_name, position)
 
-    def set_objetct_y_rotation(self, object_name, y_rotation):
+    def set_object_y_rotation(self, object_name, y_rotation):
         self._OBJET.SetObjectYRotation(object_name, y_rotation)
 
-    def set_objetct_scale(self, object_name, scale):
+    def set_object_scale(self, object_name, scale):
         self._OBJET.SetObjectScale(object_name, scale)

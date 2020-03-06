@@ -15,10 +15,12 @@ make python
 ```
 ```python
 # for now
-from OBJET import OBJET
-objet = OBJET("./configs/meta.json")
-objet.setObjectPosition("cross", [3., 0., 3.])
-objet.DrawToImage("./output.png")
+from objet import Objet
+objet = Objet("./configs/meta.json")
+objet.set_object_position("cross", [3., 0., 3.])
+objet.draw()
+image = objet.get_image()
+objet.to_image("./output.png")
 ```
 
 ###### Ali Eslami et al.: www.youtube.com/watch?v=G-kWNQJ4idw
