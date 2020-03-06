@@ -1,4 +1,5 @@
 #include <string>
+#include <vector>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -14,7 +15,9 @@ public:
 
     /* Function */
     OBJET(std::string pathToMetaJSON);
-    void DrawToImage(std::string pathToImage);
+    void Draw();
+    void ToImage(std::string pathToImage);
+    std::vector<int> GetImage();
     void setObjectPosition(std::string objectName, std::vector<float> position);
     void setObjectYRotation(std::string objectName, float yRotation);
     void setObjectScale(std::string objectName, float scale);

@@ -1,5 +1,7 @@
 #include "OBJET.h"
 
+#include <iterator>
+
 #include <FreeImage.h>
 
 #include "util.h"
@@ -12,9 +14,8 @@ OBJET::OBJET(std::string pathToMetaJSON)
 }
 
 
-void OBJET::DrawToImage(std::string pathToImage)
+void OBJET::Draw()
 {
-
     // use shader
     objectShader->use();
 
@@ -30,14 +31,35 @@ void OBJET::DrawToImage(std::string pathToImage)
     model->draw(objectShader);
 
     glFlush();
+}
 
+
+std::vector<int> OBJET::GetImage()
+{
     // Make the BYTE array
     int width = 500;
     int height = 500;
     GLubyte* pixels = new GLubyte[3 * width * height];
 
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
-    // glReadBuffer(GL_FRONT);
+    glReadPixels(0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+
+    std::vector<int> image;
+    for (int i = 0; i < 3 * width * height; i++)
+        image.push_back(static_cast<int>(pixels[i]));
+
+    return image;
+}
+
+
+void OBJET::ToImage(std::string pathToImage)
+{
+    // Make the BYTE array
+    int width = 500;
+    int height = 500;
+    GLubyte* pixels = new GLubyte[3 * width * height];
+
+    glPixelStorei(GL_PACK_ALIGNMENT, 1);
     glReadPixels(0, 0, width, height, GL_BGR_EXT, GL_UNSIGNED_BYTE, pixels);
 
     FIBITMAP* image = FreeImage_ConvertFromRawBits(pixels, width, height, 3 * width, 24, 0x0000FF, 0xFF0000, 0x00FF00, false);

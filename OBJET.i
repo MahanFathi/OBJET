@@ -14,6 +14,7 @@
 
 namespace std
 {
+   %template(IntVector) vector<int>;
    %template(FloatVector) vector<float>;
 }
 
