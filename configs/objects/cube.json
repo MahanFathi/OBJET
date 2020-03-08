@@ -1,0 +1,11 @@
+{
+    "path_to_obj": "./resources/objects/cube.obj",
+    "color": {
+        "r": 36,
+        "g": 240,
+        "b": 216
+    },
+    "ambient_strength": 0.8,
+    "diffuse_strength": 0.9,
+    "specular_strength": 0.4
+}

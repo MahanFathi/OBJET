@@ -1,9 +1,9 @@
 {
     "path_to_obj": "./resources/objects/room.obj",
     "color": {
-        "r": 255,
-        "g": 218,
-        "b": 191
+        "r": 63,
+        "g": 63,
+        "b": 63
     },
     "ambient_strength": 0.5,
     "diffuse_strength": 0.1,

@@ -3,7 +3,7 @@
     [
         {
             "name": "room",
-            "path_to_json": "./configs/objects/room.json",
+            "path_to_json": "./configs/objects/ps_room.json",
             "scale": 0.5,
             "rotation_y": 1.0,
             "translation": {
@@ -13,36 +13,47 @@
             }
         },
         {
-            "name": "cube",
-            "path_to_json": "./configs/objects/cube.json",
-            "scale": 0.5,
+            "name": "cross",
+            "path_to_json": "./configs/objects/cross.json",
+            "scale": 1.0,
+            "rotation_y": 2.0,
+            "translation": {
+                "x": 3.0,
+                "y": 0.0,
+                "z": 3.0
+            }
+        },
+        {
+            "name": "triangle",
+            "path_to_json": "./configs/objects/triangle.json",
+            "scale": 1.5,
+            "rotation_y": 1.0,
+            "translation": {
+                "x":  3.0,
+                "y":  0.01,
+                "z": -3.0
+            }
+        },
+        {
+            "name": "circle",
+            "path_to_json": "./configs/objects/circle.json",
+            "scale": 1.0,
             "rotation_y": 2.0,
             "translation": {
                 "x": -3.0,
                 "y":  0.0,
-                "z":  2.0
+                "z": -3.0
             }
         },
         {
-            "name": "sphere",
-            "path_to_json": "./configs/objects/sphere.json",
-            "scale": 0.5,
+            "name": "square",
+            "path_to_json": "./configs/objects/square.json",
+            "scale": 1.0,
             "rotation_y": 1.0,
             "translation": {
-                "x":  4.0,
-                "y":  0.0,
-                "z":  4.0
-            }
-        },
-        {
-            "name": "cone",
-            "path_to_json": "./configs/objects/cone.json",
-            "scale": 0.5,
-            "rotation_y": 2.0,
-            "translation": {
-                "x":  3.0,
-                "y":  0.0,
-                "z": -6.0
+                "x": -3.0,
+                "y":  0.01,
+                "z":  3.0
             }
         }
     ],
@@ -95,9 +106,9 @@
     "camera":
     {
         "position": {
-            "x":  3.9,
-            "y":  2.0,
-            "z": -9.0
+            "x":  7.0,
+            "y":  4.0,
+            "z":  7.0
         },
         "target": {
             "x":  0.0,

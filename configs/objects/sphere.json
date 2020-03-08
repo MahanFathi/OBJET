@@ -1,0 +1,11 @@
+{
+    "path_to_obj": "./resources/objects/sphere.obj",
+    "color": {
+        "r": 255,
+        "g": 56,
+        "b": 86
+    },
+    "ambient_strength": 0.4,
+    "diffuse_strength": 0.3,
+    "specular_strength": 0.4
+}
