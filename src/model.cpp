@@ -12,8 +12,9 @@ Model::Model(data::MetaData &metaData):
 }
 
 
-void Model::setEnvironmentPorperties(Shader* shader)
+void Model::setEnvironment(Shader* shader)
 {
+    setShadow(shader);
     setCamera(shader);
     setLightProperties(shader);
 }
@@ -31,8 +32,8 @@ void Model::draw(Shader* shader)
 void Model::setLightProperties(Shader* shader)
 {
     // directional lighting
-    shader->setUniform("directionalLigth.direction", metaData.directionalLightDirection);
-    shader->setUniform("directionalLigth.color", metaData.directionalLightColor);
+    shader->setUniform("directionalLight.direction", glm::normalize(metaData.directionalLightDirection));
+    shader->setUniform("directionalLight.color", metaData.directionalLightColor);
 
     // point lighting
     shader->setUniform("pointLightCount", metaData.pointLightCount);
@@ -58,6 +59,7 @@ void Model::setTransformations(Shader* shader, unsigned int objectNum)
 
 }
 
+
 void Model::setCamera(Shader* shader)
 {
     glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0);
@@ -70,6 +72,18 @@ void Model::setCamera(Shader* shader)
     glm::mat4 projection = glm::mat4(1.0f);
     projection = glm::perspective(glm::radians(60.0f), 500.0f / 500.0f, 0.1f, 1000.0f);
     shader->setUniform("projection", projection);
+}
+
+
+void Model::setShadow(Shader* shader)
+{
+    float scale = 10;
+    float bound = 30.0f, near_plane = 5.0f, far_plane = 20.0f;
+    glm::mat4 lightProjection = glm::ortho(-bound, bound, -bound, bound, near_plane, far_plane);
+    glm::mat4 lightView = glm::lookAt(-scale * glm::normalize(metaData.directionalLightDirection),
+                                      glm::vec3( 0.0f, 0.0f,  0.0f), glm::vec3( 0.0f, 1.0f,  0.0f));
+    glm::mat4 lightSpaceMatrix = lightProjection * lightView;
+    shader->setUniform("lightSpaceMatrix", lightSpaceMatrix);
 }
 
 

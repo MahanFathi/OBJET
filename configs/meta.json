@@ -38,7 +38,7 @@
             "name": "circle",
             "path_to_json": "./configs/objects/circle.json",
             "scale": 1.0,
-            "rotation_y": 4.0,
+            "rotation_y": 2.0,
             "translation": {
                 "x": -3.0,
                 "y":  0.0,
@@ -91,8 +91,8 @@
         "directional_light":
         {
             "direction": {
-                "x":  1.0,
-                "y": -1.0,
+                "x":  5.0,
+                "y": -10.0,
                 "z":  1.0
             },
             "color": {

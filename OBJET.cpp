@@ -5,28 +5,37 @@
 #include "util.h"
 
 OBJET::OBJET(std::string pathToMetaJSON, int width, int height):
-    width(width), height(height)
+    width(width), height(height), shadowWidth(3 * width), shadowHeight(3 * height)
 {
     InitOpenGL();
-    InitShader();
+    InitShaders();
     InitModel(pathToMetaJSON);
 }
 
 
 void OBJET::Draw()
 {
-    // use shader
-    objectShader->use();
+    glBindFramebuffer(GL_FRAMEBUFFER, renderFramebuffer);
 
-    // use specific buffer to draw
-    // glDrawBuffer(GL_FRONT);
+    shadowShader->use();
+    model->setShadow(shadowShader);
+    glViewport(0, 0, shadowWidth, shadowHeight);
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFramebuffer);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    model->draw(shadowShader);
 
+    glBindFramebuffer(GL_FRAMEBUFFER, renderFramebuffer);
+    glViewport(0, 0, width, height);
     glClearColor(0.55f, 0.77, 0.85f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glClear(GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // draw object
-    model->setEnvironmentPorperties(objectShader);
+    objectShader->use();
+    model->setEnvironment(objectShader);
+    objectShader->setUniform("shadowMap", 0);
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+
     model->draw(objectShader);
 
     glFlush();
@@ -35,6 +44,7 @@ void OBJET::Draw()
 
 std::vector<int> OBJET::GetImage()
 {
+    glBindFramebuffer(GL_FRAMEBUFFER, renderFramebuffer);
     // Make the BYTE array
     GLubyte* pixels = new GLubyte[3 * width * height];
 
@@ -51,6 +61,8 @@ std::vector<int> OBJET::GetImage()
 
 void OBJET::ToImage(std::string pathToImage)
 {
+    glBindFramebuffer(GL_FRAMEBUFFER, renderFramebuffer);
+
     // Make the BYTE array
     GLubyte* pixels = new GLubyte[3 * width * height];
 
@@ -111,12 +123,11 @@ void OBJET::InitOpenGL()
     // run depth check (Z-buffer)
     glEnable(GL_DEPTH_TEST);
 
-    // off-screen rendering
+    /* Reder FrameBuffer */ // off-screen rendering
     // weird stuff happens in i3 for example when rendering to
     // the main buffer, the desktop manager messes with window
-    unsigned int framebuffer;
-    glGenFramebuffers(1, &framebuffer);
-    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    glGenFramebuffers(1, &renderFramebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, renderFramebuffer);
     // color attachment texture
     unsigned int textureColorbuffer;
     glGenTextures(1, &textureColorbuffer);
@@ -131,12 +142,28 @@ void OBJET::InitOpenGL()
     glBindRenderbuffer(GL_RENDERBUFFER, rbo);
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+
+    /* Depth Map FrameBuffer */ // for shadowing
+    glGenFramebuffers(1, &depthMapFramebuffer);
+    glGenTextures(1, &depthMap);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, shadowWidth, shadowHeight,
+                 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFramebuffer);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
+    glDrawBuffer(GL_NONE); glReadBuffer(GL_NONE);
+
 }
 
 
-void OBJET::InitShader()
+void OBJET::InitShaders()
 {
     objectShader = new Shader("./shaders/vertex_shader.glsl", "./shaders/fragment_shader.glsl");
+    shadowShader = new Shader("./shaders/shadow_vertex_shader.glsl", "./shaders/shadow_fragment_shader.glsl");
 }
 
 

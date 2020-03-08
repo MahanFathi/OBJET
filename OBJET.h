@@ -24,14 +24,20 @@ public:
 
 protected:
     /* Data */
-    int width, height;
+    GLuint renderFramebuffer;
+    GLuint depthMapFramebuffer;
+    GLuint depthMap;
+
+    unsigned width, height;
+    unsigned shadowWidth, shadowHeight;
     GLFWwindow* window;
     Shader* objectShader;
+    Shader* shadowShader;
     Model* model;
 
     /* Function */
     void InitOpenGL();
-    void InitShader();
+    void InitShaders();
     void InitModel(std::string pathToMetaJSON);
 
 };
