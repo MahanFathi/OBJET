@@ -20,6 +20,7 @@ public:
     void setShadow(Shader* shader);
     void setEnvironment(Shader* shader);
     void draw(Shader* shader);
+    void setCamera(std::vector<float> position, std::vector<float> target);
     void setObjectPosition(std::string &objectName, std::vector<float> position);
     void setObjectYRotation(std::string &objectName, float yRotation);
     void setObjectScale(std::string &objectName, float scale);

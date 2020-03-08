@@ -76,6 +76,12 @@ void OBJET::ToImage(std::string pathToImage)
 }
 
 
+void OBJET::SetCamera(std::vector<float> position, std::vector<float> target)
+{
+    model->setCamera(position, target);
+}
+
+
 void OBJET::SetObjectPosition(std::string objectName, std::vector<float> position)
 {
     model->setObjectPosition(objectName, position);

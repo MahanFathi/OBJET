@@ -22,6 +22,9 @@ class Objet(object):
     def to_image(self, path_to_image):
         self._OBJET.ToImage(path_to_image)
 
+    def set_camera(self, position, target):
+        self._OBJET.SetCamera(position, target)
+
     def set_object_position(self, object_name, position):
         self._OBJET.SetObjectPosition(object_name, position)
 

@@ -99,6 +99,20 @@ unsigned Model::objectNameToIndex(std::string &objectName)
 }
 
 
+void Model::setCamera(std::vector<float> position, std::vector<float> target)
+{
+    metaData.cameraPosition = glm::vec3(
+        position[0],
+        position[1],
+        position[2]
+    );
+    metaData.cameraTarget = glm::vec3(
+        target[0],
+        target[1],
+        target[2]
+    );
+}
+
 
 void Model::setObjectPosition(std::string &objectName, std::vector<float> position)
 {
