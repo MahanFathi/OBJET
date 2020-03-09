@@ -22,12 +22,15 @@ make python
 ```python
 # for now
 from objet import Objet
-objet = Objet("./configs/meta.json")
+objet = Objet("./configs/ps_meta.json")
 objet.set_object_position("cross", [3., 0., 3.])
 objet.draw()
 image = objet.get_image()
 objet.to_image("./output.png")
 ```
+<img align="right" width="200" height="200" src="./resources/images/ps_meta.png" title="ps_meta room"> <img align="right" width="200" height="200" src="./resources/images/meta.png" title="meta room">
+
+
 
 ##### What does "OBJET" mean?
 Objet is French for "object."
