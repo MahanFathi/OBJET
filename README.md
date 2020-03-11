@@ -12,7 +12,7 @@ Check out the footnoted video by Ali Eslami et al. to see such environment in pr
 ### Dependencies
 On Arch Linux:
 ```
-sudo pacman -S mesa glfw-x11 glew assimp swig freeimage
+sudo pacman -S mesa glfw-x11 glew glm assimp swig freeimage
 ```
 
 ### Usage
