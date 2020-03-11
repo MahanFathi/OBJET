@@ -39,7 +39,7 @@ Objet is French for "object."
 No, I used Google Translate.
 
 ##### Why C++/SWIG and not PyOpenGL?
-* Data Scientists should learn to install their own dependencies. Life ain't always `pip install package`.
+* Data Scientists should learn to install dependencies on their own — life ain't always `pip install package`.
 * PyOpenGL is an overkill by nature. 
 * Might be interested in linking the data directly to CUDA later on.
 * This work has been done over a COVID-19 quarantine, I had to kill some time.
