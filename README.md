@@ -16,9 +16,13 @@ sudo pacman -S rapidjson mesa glfw-x11 glew glm assimp swig freeimage
 ```
 
 ### Usage
+
+### Build
 ```bash 
 make python
 ```
+
+### get_image
 ```python
 # for now
 from objet import Objet
@@ -29,6 +33,17 @@ image = objet.get_image()
 objet.to_image("./output.png")
 ```
 <img align="right" width="200" height="200" src="./resources/images/ps_meta.png" title="ps_meta room"> <img align="right" width="200" height="200" src="./resources/images/meta.png" title="meta room">
+
+### get_depth_map
+```python
+# for now
+depth_map = objet.get_depth_map()
+# for demonstration
+from matplotlib import pyplot as plt
+plt.imshow(depth_map * 10, cmap='gray', vmin=0, vim=255)
+plt.show()
+```
+<img align="right" width="200" height="200" src="./resources/images/depth_ps_meta.png" title="ps_meta room"> <img align="right" width="200" height="200" src="./resources/images/depth_meta.png" title="meta room">
 
 
 
