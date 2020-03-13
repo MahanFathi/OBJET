@@ -23,7 +23,7 @@ make python
 ```
 
 #### get_image
-<img align="right" width="200" height="200" src="./resources/images/ps_meta.png" title="ps_meta room"> <img align="right" width="200" height="200" src="./resources/images/meta.png" title="meta room">
+<img align="right" width="150" height="150" src="./resources/images/ps_meta.png" title="ps_meta room"> <img align="right" width="150" height="150" src="./resources/images/meta.png" title="meta room">
 ```python
 # for now
 from objet import Objet
@@ -35,7 +35,7 @@ objet.to_image("./output.png")
 ```
 
 #### get_depth_map
-<img align="right" width="200" height="200" src="./resources/images/depth_ps_meta.png" title="ps_meta room"> <img align="right" width="200" height="200" src="./resources/images/depth_meta.png" title="meta room">
+<img align="right" width="150" height="150" src="./resources/images/depth_ps_meta.png" title="ps_meta room"> <img align="right" width="150" height="150" src="./resources/images/depth_meta.png" title="meta room">
 ```python
 # for now
 depth_map = objet.get_depth_map()
