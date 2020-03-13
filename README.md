@@ -39,9 +39,9 @@ objet.to_image("./output.png")
 # for now
 depth_map = objet.get_depth_map()
 # for demonstration
-from matplotlib import pyplot as plt
-plt.imshow(depth_map * 10, cmap='gray', vmin=0, vim=255)
-plt.show()
+from PIL import Image
+img = Image.fromarray(depth_map * 10)
+img.show()
 ```
 <img align="right" width="200" height="200" src="./resources/images/depth_ps_meta.png" title="ps_meta room"> <img align="right" width="200" height="200" src="./resources/images/depth_meta.png" title="meta room">
 
