@@ -48,7 +48,7 @@ void main()
     vec3 result = CalcDirLight(directionalLight, fragNormal, viewDirection, shadow);
 
     // point lights
-    for(int i = 0; i < max(NR_POINT_LIGHTS, pointLightCount); i++)
+    for(int i = 0; i < min(NR_POINT_LIGHTS, pointLightCount); i++)
         result += CalcPointLight(pointLights[i], fragNormal, fragPosition, viewDirection);
 
     FragColor = vec4(result, 1.0);

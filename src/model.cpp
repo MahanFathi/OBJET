@@ -38,8 +38,8 @@ void Model::setLightProperties(Shader* shader)
     // point lighting
     shader->setUniform("pointLightCount", metaData.pointLightCount);
     for(unsigned int i = 0; i < metaData.pointLightCount; i++) {
-        shader->setUniform("pointLights.[" + std::to_string(i) + "].position", metaData.pointLightPositions[i]);
-        shader->setUniform("pointLights.[" + std::to_string(i) + "].color", metaData.pointLightColors[i]);
+        shader->setUniform("pointLights[" + std::to_string(i) + "].position", metaData.pointLightPositions[i]);
+        shader->setUniform("pointLights[" + std::to_string(i) + "].color", metaData.pointLightColors[i]);
     }
 }
 
