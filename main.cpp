@@ -65,7 +65,7 @@ int main()
     Shader* objectShader = new Shader("./shaders/vertex_shader.glsl", "./shaders/fragment_shader.glsl");
 
     // model
-    data::MetaData metaData("./configs/meta.json");
+    data::MetaData metaData("./configs/ps_meta.json");
     Model model(metaData);
 
     //  make transformations
