@@ -19,6 +19,11 @@ class Objet(object):
         img = img.reshape([self.height, self.width, -1])
         return np.flip(img, axis=0)
 
+    def get_depth_map(self, ):
+        img = np.array(self._OBJET.GetDepthMap())
+        img = img.reshape([self.height, self.width])
+        return np.flip(img, axis=0)
+
     def to_image(self, path_to_image):
         self._OBJET.ToImage(path_to_image)
 

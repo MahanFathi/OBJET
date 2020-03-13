@@ -70,7 +70,9 @@ void Model::setCamera(Shader* shader)
     shader->setUniform("view", view);
 
     glm::mat4 projection = glm::mat4(1.0f);
-    projection = glm::perspective(glm::radians(60.0f), 500.0f / 500.0f, 0.1f, 1000.0f);
+    projection = glm::perspective(glm::radians(metaData.cameraFieldOfView), 1.0f, // FIXME: aspect ratio
+                                  metaData.cameraPerspectiveNearPlane,
+                                  metaData.cameraPerspectiveFarPlane);
     shader->setUniform("projection", projection);
 }
 

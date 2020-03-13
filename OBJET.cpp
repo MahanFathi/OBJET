@@ -42,6 +42,28 @@ void OBJET::Draw()
 }
 
 
+std::vector<float> OBJET::GetDepthMap()
+{
+    glBindFramebuffer(GL_FRAMEBUFFER, renderFramebuffer);
+    // Make the FLOAT array
+    GLfloat* pixels = new GLfloat[width * height];
+
+    glPixelStorei(GL_PACK_ALIGNMENT, 1);
+    glReadPixels(0, 0, width, height, GL_DEPTH_COMPONENT, GL_FLOAT, pixels);
+
+    std::vector<float> image;
+    float near = model->metaData.cameraPerspectiveNearPlane;
+    float far = model->metaData.cameraPerspectiveFarPlane;
+    for (int i = 0; i < width * height; i++) {
+        float z = 2.0f * pixels[i] - 1.0f;
+        z = (2.0 * near * far) / (far + near - z * (far - near));
+        image.push_back(z);
+    }
+
+    return image;
+}
+
+
 std::vector<int> OBJET::GetImage()
 {
     glBindFramebuffer(GL_FRAMEBUFFER, renderFramebuffer);

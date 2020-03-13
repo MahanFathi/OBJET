@@ -114,6 +114,11 @@
             "x":  0.0,
             "y":  0.0,
             "z":  0.0
+        },
+        "perspective": {
+            "field_of_view": 60.0,
+            "near_plane": 0.1,
+            "far_plane": 1000.0
         }
     }
 }

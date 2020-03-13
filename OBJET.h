@@ -17,6 +17,7 @@ public:
     OBJET(std::string pathToMetaJSON, int width, int heigth);
     void Draw();
     void ToImage(std::string pathToImage);
+    std::vector<float> GetDepthMap();
     std::vector<int> GetImage();
     void SetCamera(std::vector<float> position, std::vector<float> target);
     void SetObjectPosition(std::string objectName, std::vector<float> position);

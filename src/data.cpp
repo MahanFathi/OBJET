@@ -78,6 +78,9 @@ data::MetaData::MetaData(const char *pathToMetaJSON) {
     cameraTarget = glm::vec3(
         target_x, target_y, target_z
     );
+    cameraFieldOfView = camera["perspective"]["field_of_view"].GetFloat();
+    cameraPerspectiveNearPlane = camera["perspective"]["near_plane"].GetFloat();
+    cameraPerspectiveFarPlane = camera["perspective"]["far_plane"].GetFloat();
 }
 
 

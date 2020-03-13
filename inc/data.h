@@ -24,6 +24,9 @@ public:
     // camera
     glm::vec3 cameraPosition;
     glm::vec3 cameraTarget;
+    float cameraFieldOfView;
+    float cameraPerspectiveNearPlane;
+    float cameraPerspectiveFarPlane;
     // lighting
     int pointLightCount;
     std::vector<glm::vec3> pointLightPositions;
