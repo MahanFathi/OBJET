@@ -26,7 +26,7 @@ make python
 ### get_image
 ```python
 # for now
-from objet import Objet
+from pyobjet import Objet
 objet = Objet("./configs/ps_meta.json")
 objet.set_object_position("cross", [3., 0., 3.])
 objet.draw()

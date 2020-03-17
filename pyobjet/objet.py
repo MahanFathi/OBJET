@@ -1,4 +1,4 @@
-from OBJET import OBJET
+from .OBJET import OBJET
 
 import numpy as np
 
