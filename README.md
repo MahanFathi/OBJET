@@ -17,9 +17,10 @@ sudo pacman -S rapidjson mesa glfw-x11 glew glm assimp swig freeimage
 
 ### Usage
 
-#### Build
+#### Build and Install
 ```bash 
-make python
+make python -j4
+python setup.py install
 ```
 
 #### get_image
@@ -54,9 +55,10 @@ Objet is French for "object."
 No, I used Google Translate.
 
 ##### Why C++/SWIG and not PyOpenGL?
-* Data Scientists should learn to install dependencies on their own — life ain't always `pip install package`.
 * PyOpenGL is an overkill by nature. 
+* Might be interested in using this library in other languages.
 * Might be interested in linking the data directly to CUDA later on.
+* Data Scientists should learn to install dependencies on their own — life ain't always `pip install package`.
 * This work has been done over a COVID-19 quarantine, I had to kill some time.
 
 ###### Ali Eslami et al.: www.youtube.com/watch?v=G-kWNQJ4idw
