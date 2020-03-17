@@ -1,13 +1,13 @@
+#include <string>
+
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
 #include "shader.h"
 
-Shader::Shader(const char* vertexPath, const char* fragmentPath) {
+Shader::Shader(std::string vertexShaderScript, std::string fragmentShaderScript) {
 
     // vertex shader
-    std::ifstream tv(vertexPath);
-    std::string vertexShaderScript((std::istreambuf_iterator<char>(tv)), std::istreambuf_iterator<char>());
     const char * vertexShaderSource = vertexShaderScript.c_str();
     GLuint vertexShader;
     vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -15,8 +15,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath) {
     glCompileShader(vertexShader);
 
     // fragment shader
-    std::ifstream tf(fragmentPath);
-    std::string fragmentShaderScript((std::istreambuf_iterator<char>(tf)), std::istreambuf_iterator<char>());
     const char * fragmentShaderSource = fragmentShaderScript.c_str();
     GLuint fragmentShader;
     fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);

@@ -15,7 +15,7 @@ class Shader {
 public:
     GLuint ID;
 
-    Shader(const char* vertexPath, const char* fragmentPath);
+    Shader(std::string vertexShaderScript, std::string fragmentShaderScript);
     void use();
 
     void setUniform(const std::string &name, float value) const;

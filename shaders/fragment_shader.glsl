@@ -1,3 +1,5 @@
+R"glsl(
+
 #version 430 core
 
 struct Material {
@@ -118,3 +120,5 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir)
 
     return shadow;
 }
+
+)glsl"

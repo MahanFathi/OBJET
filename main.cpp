@@ -62,7 +62,7 @@ int main()
     glfwSetCursorPosCallback(window, mouse_callback);
 
     // shader
-    Shader* objectShader = new Shader("./shaders/vertex_shader.glsl", "./shaders/fragment_shader.glsl");
+    Shader* objectShader = new Shader(objectVertexShader, objectFragmentShader);
 
     // model
     data::MetaData metaData("./configs/ps_meta.json");
@@ -95,7 +95,7 @@ int main()
     glDrawBuffer(GL_NONE); glReadBuffer(GL_NONE);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     // shadow shader
-    Shader* shadowShader = new Shader("./shaders/shadow_vertex_shader.glsl", "./shaders/shadow_fragment_shader.glsl");
+    Shader* shadowShader = new Shader(shadowVertexShader, shadowFragmentShader);
 
 
     // render loop

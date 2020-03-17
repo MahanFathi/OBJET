@@ -2,6 +2,7 @@
 
 #include <FreeImage.h>
 
+#include "common.h"
 #include "util.h"
 
 OBJET::OBJET(std::string pathToMetaJSON, int width, int height):
@@ -190,8 +191,8 @@ void OBJET::InitOpenGL()
 
 void OBJET::InitShaders()
 {
-    objectShader = new Shader("./shaders/vertex_shader.glsl", "./shaders/fragment_shader.glsl");
-    shadowShader = new Shader("./shaders/shadow_vertex_shader.glsl", "./shaders/shadow_fragment_shader.glsl");
+    objectShader = new Shader(objectVertexShader, objectFragmentShader);
+    shadowShader = new Shader(shadowVertexShader, shadowFragmentShader);
 }
 
 
