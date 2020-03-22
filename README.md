@@ -18,9 +18,9 @@ sudo pacman -S rapidjson mesa glfw-x11 glew glm assimp swig freeimage
 ### Usage
 
 #### Build and Install
-```bash 
+```sh 
 make python -j4
-python setup.py install
+pip install .
 ```
 
 #### get_image
