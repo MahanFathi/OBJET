@@ -2,7 +2,7 @@
 
 #include <FreeImage.h>
 
-#include "common.h"
+#include "glsls.h"
 #include "util.h"
 
 OBJET::OBJET(std::string pathToMetaJSON, int width, int height):

@@ -32,5 +32,5 @@ $(OUT_DIR):
 	mkdir -p $(OUT_DIR)
 
 clean:
-	rm -rf $(BIN) $(OUT_DIR) OBJET_wrap.cxx OBJET_wrap.o _OBJET.so OBJET.o __pycache__
+	rm -rf $(BIN) $(OBJ_DIR) OBJET_wrap.cxx OBJET_wrap.o _OBJET.so OBJET.o __pycache__
 	rm -rf $(PY_OUT_DIR)/__pycache__ $(PY_OUT_DIR)/OBJET.py $(PY_OUT_DIR)/_OBJET.so

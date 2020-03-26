@@ -16,6 +16,7 @@
 #include "shader.h"
 #include "util.h"
 #include "common.h"
+#include "glsls.h"
 
 void processInput(GLFWwindow *window);
 
