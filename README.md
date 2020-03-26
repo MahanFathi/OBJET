@@ -3,8 +3,8 @@
 OBJET, is a graphical environment, developed in OpenGL and accessible in Python, to cater to the data needs of one willing to conduct research on computer vision in such domains. 
 
 <img align="right" width="200" height="200" src="./resources/logo/OBJET.png">
-Load your own objects in a room, take a snapshot of the viewport, from the view point of the customizable camera, and load it to python. 
-This gives you the ability to creat data on-the-fly, in your python data loader. 
+Load your own objects in a room, take a snapshot of the viewport, from the viewpoint of the customizable camera, and load it to python. 
+This gives you the ability to create data on-the-fly, in your python data loader. 
 Check out the footnoted video by Ali Eslami et al. to see such environment in practice.
 
 ## Synopsis
@@ -18,9 +18,9 @@ sudo pacman -S rapidjson mesa glfw-x11 glew glm assimp swig freeimage
 ### Usage
 
 #### Build and Install
-```bash 
+```sh 
 make python -j4
-python setup.py install
+pip install .
 ```
 
 #### get_image
