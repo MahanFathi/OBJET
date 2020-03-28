@@ -43,7 +43,7 @@ void Model::setLightProperties(Shader* shader)
 }
 
 
-void Model::setTransformations(Shader* shader, unsigned int objectNum)
+void Model::setTransformations(Shader* shader, const unsigned int &objectNum)
 {
     // scale and rotate
     glm::mat4 rotation = glm::mat4(1.0f);
@@ -88,7 +88,7 @@ void Model::setShadow(Shader* shader)
 }
 
 
-unsigned Model::objectNameToIndex(std::string &objectName)
+unsigned Model::objectNameToIndex(const std::string &objectName)
 {
     std::ptrdiff_t pos = distance(
         metaData->objectNames.begin(),
@@ -100,7 +100,7 @@ unsigned Model::objectNameToIndex(std::string &objectName)
 }
 
 
-void Model::setCamera(std::vector<float> position, std::vector<float> target)
+void Model::setCamera(const std::vector<float> &position, const std::vector<float> &target)
 {
     metaData->cameraPosition = glm::vec3(
         position[0],
@@ -115,7 +115,7 @@ void Model::setCamera(std::vector<float> position, std::vector<float> target)
 }
 
 
-void Model::setObjectPosition(std::string &objectName, std::vector<float> position)
+void Model::setObjectPosition(const std::string &objectName, const std::vector<float> &position)
 {
     unsigned index = objectNameToIndex(objectName);
     metaData->objectTranslations[index] = glm::vec3(
@@ -126,14 +126,14 @@ void Model::setObjectPosition(std::string &objectName, std::vector<float> positi
 }
 
 
-void Model::setObjectYRotation(std::string &objectName, float yRotation)
+void Model::setObjectYRotation(const std::string &objectName, const float &yRotation)
 {
     unsigned index = objectNameToIndex(objectName);
     metaData->objectYRotations[index] = yRotation;
 }
 
 
-void Model::setObjectScale(std::string &objectName, float scale)
+void Model::setObjectScale(const std::string &objectName, const float &scale)
 {
     unsigned index = objectNameToIndex(objectName);
     metaData->objectScales[index] = scale;

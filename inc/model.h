@@ -20,15 +20,15 @@ public:
     void setShadow(Shader* shader);
     void setEnvironment(Shader* shader);
     void draw(Shader* shader);
-    void setCamera(std::vector<float> position, std::vector<float> target);
-    void setObjectPosition(std::string &objectName, std::vector<float> position);
-    void setObjectYRotation(std::string &objectName, float yRotation);
-    void setObjectScale(std::string &objectName, float scale);
+    void setCamera(const std::vector<float> &position, const std::vector<float> &target);
+    void setObjectPosition(const std::string &objectName, const std::vector<float> &position);
+    void setObjectYRotation(const std::string &objectName, const float &yRotation);
+    void setObjectScale(const std::string &objectName, const float &scale);
 
 private:
     /* Functions */
-    void setTransformations(Shader* shader, unsigned int objectNum);
+    void setTransformations(Shader* shader, const unsigned int &objectNum);
     void setLightProperties(Shader* shader);
     void setCamera(Shader* shader);
-    unsigned objectNameToIndex(std::string &objectName);
+    unsigned objectNameToIndex(const std::string &objectName);
 };
