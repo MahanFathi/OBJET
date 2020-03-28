@@ -33,7 +33,7 @@ public:
     GLuint VAO;
 
     /*  Functions  */
-    Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices);
+    Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices);
     ~Mesh();
     void draw(Shader* shader);
 
