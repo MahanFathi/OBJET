@@ -12,11 +12,11 @@ class Model
 {
 public:
     /* Data */
-    data::MetaData metaData;
+    data::MetaData* metaData;
     std::vector<Object> objects; // model contains a bunch of objects, e.g. the room, or objects
 
     /*  Functions   */
-    Model(data::MetaData &metaData);
+    Model(const char *pathToObjectJSON);
     void setShadow(Shader* shader);
     void setEnvironment(Shader* shader);
     void draw(Shader* shader);

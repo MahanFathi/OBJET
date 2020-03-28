@@ -1,12 +1,13 @@
 #include "object.h"
 
 
-Object::Object(data::ObjectData &objectData, std::string &name):
-    name(name), objectData(objectData)
+Object::Object(const char* pathToObjectJSON, const std::string &name):
+    name(name)
 {
+    objectData = new data::ObjectData(pathToObjectJSON);
     // read file via ASSIMP
     Assimp::Importer importer;
-    const aiScene* scene = importer.ReadFile(objectData.objPath, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+    const aiScene* scene = importer.ReadFile(objectData->objPath, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
     // check for errors
     if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
@@ -15,7 +16,6 @@ Object::Object(data::ObjectData &objectData, std::string &name):
         return;
     }
 
-    directory = objectData.objPath.substr(0, objectData.objPath.find_last_of('/'));
     processNode(scene->mRootNode, scene);
 }
 
@@ -23,10 +23,10 @@ Object::Object(data::ObjectData &objectData, std::string &name):
 void Object::draw(Shader* shader)
 {
     // set material attributes
-    shader->setUniform("material.color", objectData.color);
-    shader->setUniform("material.ambientStrength", objectData.ambientStrength);
-    shader->setUniform("material.diffuseStrength", objectData.diffuseStrength);
-    shader->setUniform("material.specularStrength", objectData.specularStrength);
+    shader->setUniform("material.color", objectData->color);
+    shader->setUniform("material.ambientStrength", objectData->ambientStrength);
+    shader->setUniform("material.diffuseStrength", objectData->diffuseStrength);
+    shader->setUniform("material.specularStrength", objectData->specularStrength);
     shader->setUniform("material.shininess", 16.0f);
 
     // draw all mesh

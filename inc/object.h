@@ -22,13 +22,12 @@ class Object
 {
 public:
     /*  Data */
+    const std::string name;
     std::vector<Mesh> meshes;
-    std::string name;
-    std::string directory;
-    data::ObjectData objectData;
+    data::ObjectData* objectData;
 
     /* Functions */
-    Object(data::ObjectData &objectData, std::string &name);
+    Object(const char* pathToObjectJSON, const std::string &name);
 
     void draw(Shader* shader);
 

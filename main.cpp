@@ -66,8 +66,7 @@ int main()
     Shader* objectShader = new Shader(objectVertexShader, objectFragmentShader);
 
     // model
-    data::MetaData metaData("./configs/ps_meta.json");
-    Model model(metaData);
+    Model model("./configs/ps_meta.json");
 
     //  make transformations
     //  projection

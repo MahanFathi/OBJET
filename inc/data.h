@@ -35,7 +35,7 @@ public:
     glm::vec3 directionalLightColor;
 
     /* Functions */
-    MetaData(const char *pathToObjectJSON);
+    MetaData(const char *pathToModelJSON);
 
 };
 

@@ -10,7 +10,7 @@ OBJET::OBJET(std::string pathToMetaJSON, int width, int height):
 {
     InitOpenGL();
     InitShaders();
-    InitModel(pathToMetaJSON);
+    model = new Model(pathToMetaJSON.c_str());
 }
 
 
@@ -53,8 +53,8 @@ std::vector<float> OBJET::GetDepthMap()
     glReadPixels(0, 0, width, height, GL_DEPTH_COMPONENT, GL_FLOAT, pixels);
 
     std::vector<float> image;
-    float near = model->metaData.cameraPerspectiveNearPlane;
-    float far = model->metaData.cameraPerspectiveFarPlane;
+    float near = model->metaData->cameraPerspectiveNearPlane;
+    float far = model->metaData->cameraPerspectiveFarPlane;
     for (int i = 0; i < width * height; i++) {
         float z = 2.0f * pixels[i] - 1.0f;
         z = (2.0 * near * far) / (far + near - z * (far - near));
@@ -195,9 +195,3 @@ void OBJET::InitShaders()
     shadowShader = new Shader(shadowVertexShader, shadowFragmentShader);
 }
 
-
-void OBJET::InitModel(std::string pathToMetaJSON)
-{
-    data::MetaData metaData = data::MetaData(pathToMetaJSON.c_str());
-    model = new Model(metaData);
-}

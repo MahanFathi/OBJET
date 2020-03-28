@@ -40,6 +40,5 @@ protected:
     /* Function */
     void InitOpenGL();
     void InitShaders();
-    void InitModel(std::string pathToMetaJSON);
 
 };
