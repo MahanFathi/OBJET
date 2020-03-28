@@ -15,13 +15,13 @@ class Shader {
 public:
     GLuint ID;
 
-    Shader(std::string vertexShaderScript, std::string fragmentShaderScript);
+    Shader(const std::string &vertexShaderScript, const std::string &fragmentShaderScript);
     void use();
 
-    void setUniform(const std::string &name, float value) const;
-    void setUniform(const std::string &name, int value) const;
-    void setUniform(const std::string &name, bool value) const;
-    void setUniform(const std::string &name, glm::mat4 value) const;
-    void setUniform(const std::string &name, glm::vec3 value) const;
+    void setUniform(const std::string &name, const float &value) const;
+    void setUniform(const std::string &name, const int &value) const;
+    void setUniform(const std::string &name, const bool &value) const;
+    void setUniform(const std::string &name, const glm::mat4 &value) const;
+    void setUniform(const std::string &name, const glm::vec3 &value) const;
 
 };
