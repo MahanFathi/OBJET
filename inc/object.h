@@ -29,7 +29,7 @@ public:
     /* Functions */
     Object(const char* pathToObjectJSON, const std::string &name);
 
-    void draw(Shader* shader);
+    void draw(Shader* shader) const;
 
 private:
     /*  Functions   */

@@ -30,5 +30,5 @@ private:
     void setTransformations(Shader* shader, const unsigned int &objectNum);
     void setLightProperties(Shader* shader);
     void setCamera(Shader* shader);
-    unsigned objectNameToIndex(const std::string &objectName);
+    unsigned objectNameToIndex(const std::string &objectName) const;
 };

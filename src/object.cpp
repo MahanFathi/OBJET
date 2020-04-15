@@ -20,7 +20,7 @@ Object::Object(const char* pathToObjectJSON, const std::string &name):
 }
 
 
-void Object::draw(Shader* shader)
+void Object::draw(Shader* shader) const
 {
     // set material attributes
     shader->setUniform("material.color", objectData->color);

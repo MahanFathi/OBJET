@@ -88,7 +88,7 @@ void Model::setShadow(Shader* shader)
 }
 
 
-unsigned Model::objectNameToIndex(const std::string &objectName)
+unsigned Model::objectNameToIndex(const std::string &objectName) const
 {
     std::ptrdiff_t pos = distance(
         metaData->objectNames.begin(),

@@ -16,7 +16,7 @@ public:
     GLuint ID;
 
     Shader(const std::string &vertexShaderScript, const std::string &fragmentShaderScript);
-    void use();
+    void use() const;
 
     void setUniform(const std::string &name, const float &value) const;
     void setUniform(const std::string &name, const int &value) const;

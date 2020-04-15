@@ -35,7 +35,7 @@ public:
     /*  Functions  */
     Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices);
     ~Mesh();
-    void draw(Shader* shader);
+    void draw(Shader* shader) const;
 
 
 private:

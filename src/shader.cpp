@@ -34,7 +34,7 @@ Shader::Shader(const std::string &vertexShaderScript, const std::string &fragmen
     ID = shaderProgram;
 }
 
-void Shader::use() {
+void Shader::use() const {
     glUseProgram(ID);
 }
 
