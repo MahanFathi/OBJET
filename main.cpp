@@ -18,15 +18,6 @@
 #include "common.h"
 #include "glsls.h"
 
-void processInput(GLFWwindow *window);
-
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-
-// cam settings
-float deltaTime = 0.0f;
-glm::vec3 cameraPos   = glm::vec3(7.0f, 4.0f,  7.0f);
-glm::vec3 cameraFront = glm::normalize(-cameraPos);
-glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
 
 int main()
 {
@@ -144,51 +135,4 @@ int main()
 
     glfwTerminate();
     return 0;
-}
-
-
-void processInput(GLFWwindow *window)
-{
-    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
-
-    // cam adjustment
-    const float cameraSpeed = 2.5f * deltaTime; // adjust accordingly
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        cameraPos += cameraSpeed * cameraFront;
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        cameraPos -= cameraSpeed * cameraFront;
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-}
-
-void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
-    static bool first = true;
-    static float lastX;
-    static float lastY;
-    if (first) {
-        lastX = xpos;
-        lastY = ypos;
-        first = false;
-    }
-    static float yaw{-90.0f};
-    static float pitch{0.0f};
-    float sensitivity = 0.05f;
-    float offsetX =  xpos - lastX;
-    float offsetY =  lastY - ypos;
-    lastX = xpos;
-    lastY = ypos;
-    yaw += offsetX * sensitivity;
-    pitch += offsetY * sensitivity;
-    if(pitch > 89.0f)
-      pitch =  89.0f;
-    if(pitch < -89.0f)
-      pitch = -89.0f;
-    glm::vec3 direction;
-    direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-    direction.y = sin(glm::radians(pitch));
-    direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-    cameraFront = glm::normalize(direction);
 }
